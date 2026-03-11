@@ -26,3 +26,5 @@ df = pd.DataFrame(logs)
 df.to_csv("../data/security_logs.csv", index=False)
 
 print("Security logs generated!")
+
+Add log generator script
