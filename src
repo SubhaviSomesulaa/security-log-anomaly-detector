@@ -1,1 +1,28 @@
+import pandas as pd
+import random
+from datetime import datetime, timedelta
 
+# number of logs
+num_logs = 1000
+
+logs = []
+
+start_time = datetime.now()
+
+for i in range(num_logs):
+
+    log = {
+        "timestamp": start_time + timedelta(seconds=i),
+        "ip_address": f"192.168.1.{random.randint(1,255)}",
+        "login_attempts": random.randint(1,10),
+        "port": random.choice([22, 80, 443, 8080]),
+        "success": random.choice([0,1])
+    }
+
+    logs.append(log)
+
+df = pd.DataFrame(logs)
+
+df.to_csv("../data/security_logs.csv", index=False)
+
+print("Security logs generated!")
